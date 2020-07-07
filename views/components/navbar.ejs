@@ -1,0 +1,32 @@
+<header>
+  <nav class="main-nav bg-gray mb-10">
+    <div class="container h-full">
+      <div class="h-full flex items-center justify-between">
+        <div class="flex">
+          <h1 class="text-xl">
+            <a href="/">
+              <span class="text-primary font-bold">Arabs</span
+              ><span class="font-normal">Overflow</span>
+            </a>
+          </h1>
+          <form action="/search" method="GET" class="search-form w-64 mr-5">
+            <ion-icon name="search-outline" class="search-icon"></ion-icon>
+            <input type="text" id="s" name="s" aria-label="بحث" />
+          </form>
+        </div>
+        <div class="flex items-center">
+          <a href="/blog" class="nav-link ml-4">
+            المدونة
+          </a>
+          <% if (req.isLoggedIn) { %>
+          <a href="/users/logout" class="nav-link">تسجيل الخروج</a>
+          <% } else { %>
+          <a href="/users/signup" class="btn btn-primary">
+            إنشاء حساب
+          </a>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

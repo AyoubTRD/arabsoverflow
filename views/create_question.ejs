@@ -1,0 +1,45 @@
+<%- include("components/header") %>
+<div class="container">
+  <h1 class="mb-10 text-5xl font-bold">طرح سؤال</h1>
+  <form action="/questions" method="POST" class="question-form">
+    <div class="mb-4">
+      <label for="title">عنوان السؤال</label>
+      <input
+        type="text"
+        id="title"
+        name="title"
+        class="mt-2"
+        value="<%= locals.req && req.body.title %>"
+      />
+      <% if (locals.errors && errors.title) { %>
+      <p class="py-3 mt-4 px-3 bg-red bg-opacity-25 rounded border-red border">
+        <%= locals.errors.title %>
+      </p>
+      <% } %>
+    </div>
+    <div class="mb-4">
+      <label for="tag">مواضيع السؤال</label>
+      <input type="hidden" id="tags" name="tags" />
+      <input type="text" class="tags-input mt-2" name="tag" id="tag" />
+      <% if (locals.errors && errors.tags) { %>
+      <p class="py-3 mt-4 px-3 bg-red bg-opacity-25 rounded border-red border">
+        <%= locals.errors.tags %>
+      </p>
+      <% } %>
+      <div class="h-12 flex items-center" id="tags-container"></div>
+    </div>
+    <label for="editor">الوصف</label>
+    <input type="hidden" id="body" name="body" />
+    <%- include("components/editor") %> <% if (locals.errors &&
+    locals.errors.body) { %>
+    <p class="py-3 mt-4 px-3 bg-red bg-opacity-25 rounded border-red border">
+      <%= locals.errors.body %>
+    </p>
+    <% } %>
+    <button type="submit" class="w-full mt-4 btn btn-primary">
+      طرح السؤال
+    </button>
+  </form>
+</div>
+<%- include("components/footer", { extraScripts: ["/js/create_question.js"] })
+%>

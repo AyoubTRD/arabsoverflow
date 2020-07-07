@@ -1,0 +1,44 @@
+<%- include("components/header") %>
+
+<div class="container">
+  <div class="flex justify-between">
+    <h1 class="text-5xl font-bold mb-10">آخر الأسئلة المطروحة</h1>
+    <% if (req.isLoggedIn) { %>
+    <a href="/questions/create" class="btn btn-primary">
+      إطرح سؤالا
+    </a>
+    <% } %>
+  </div>
+  <% for (const question of questions) { %>
+  <div class="question bg-gray bg-opacity-50 border-gray border-b-2 py-3 px-3">
+    <h3 class="question-title text-4xl font-semibold mb-4 hover:underline">
+      <a href="/questions/<%= question._id %>">
+        <%= question.title %>
+      </a>
+    </h3>
+    <div class="flex justify-between">
+      <div class="flex question-tags">
+        <% for (const tag of question.tags) { %>
+        <a
+          href="/tags/<%= tag._id %>"
+          class="tag py-1 px-4 rounded bg-primary bg-opacity-25 text-primary mx-1"
+        >
+          <%= tag.name %>
+        </a>
+        <% } %>
+      </div>
+      <p class="question-summary">
+        طرح منذ <%= formatDistanceToNow(question.createdAt, { locale: arMA }) %>
+        من طرف
+        <a
+          href="/users/<%= question.author._id %>"
+          class="text-primary hover:underline"
+          ><%= question.author.firstName %></a
+        >
+      </p>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<%- include("components/footer"); %>

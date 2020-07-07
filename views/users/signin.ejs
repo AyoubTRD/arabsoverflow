@@ -1,0 +1,39 @@
+<%- include("../components/header") %>
+<div class="container">
+  <h1 class="text-5xl font-bold mb-10">تسجيل الدخول</h1>
+  <form action="/users/signin" method="POST">
+    <div class="row">
+      <div class="col-12">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" class="mt-2 mb-4" />
+      </div>
+      <div class="col-12">
+        <label for="password">كلمة السر</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="mt-2 mb-4"
+        />
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-full">
+          تسجيل الدخول
+        </button>
+        <p class="mt-4">
+          لا تمتلك حسابا؟ قم ب<a href="/users/signup" class="text-primary"
+            >إنشاء حساب</a
+          >
+        </p>
+        <% if (locals.error) { %>
+        <p
+          class="py-3 mt-4 px-3 bg-red bg-opacity-25 rounded border-red border"
+        >
+          المعلومات خاطئة
+        </p>
+        <% } %>
+      </div>
+    </div>
+  </form>
+</div>
+<%- include("../components/footer") %>

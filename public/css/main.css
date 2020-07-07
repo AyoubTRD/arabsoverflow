@@ -1,0 +1,101 @@
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline-color: #09f;
+}
+
+html {
+  direction: rtl;
+  font-family: Cairo, sans-serif;
+}
+
+.main-nav {
+  height: 86px;
+}
+
+input {
+  border-radius: 7px;
+  border: 1px solid #737373;
+  background: white;
+  height: 37px;
+  font-family: inherit;
+  width: 100%;
+  font-size: 13px;
+  padding: 0 10px;
+  display: block;
+}
+
+.search-form {
+  position: relative;
+  width: 18rem;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.search-form input {
+  padding-right: 30px;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 6px;
+  right: 0;
+  width: 60%;
+  height: 5px;
+  background-color: rgba(0, 153, 255, 0.25);
+  transition: 0.15s ease-in-out;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  height: 7px;
+}
+
+.btn {
+  padding: 0 20px;
+  height: 37px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background-color: #09f;
+  color: white;
+}
+
+#editor {
+  height: 450px;
+}
+
+#editor,
+#editor-container {
+  direction: ltr;
+}
+
+.tag {
+  position: relative;
+}
+
+.tag-delete {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  cursor: pointer;
+  font-size: 14px;
+}
